@@ -1,0 +1,47 @@
+/* reset */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+/* header */
+.azul-menu{
+  background-color: #003B71;
+  color:#fff;
+}
+/* main */
+.nota{
+    font-weight: bold;
+}
+.nota-baixa{
+    color:red;
+}
+.nota-alta{
+    color:green;
+}
+.login{
+  min-height: 800px;
+}
+.border{
+    border:1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+main{
+  min-height: 800px;
+}
+
+/* modal */
+#modalEdit .input-group, #formAdd .input-group{
+    margin-bottom: 1rem;
+}
+
+
+/* loading */
+.loading{
+  margin-top: 10rem;
+}

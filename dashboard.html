@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Elias Graciano Rebequi">
+    <meta name="description" content="Projeto Integrador - Sistemas para internet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Notas - Cruzeiro do Sul</title>
+    <script src="assets/js/index.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/bs5/css/bootstrap.css">
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/png">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark azul-menu">
+      <div class="container">
+        <a class="navbar-brand" href="dashboard.html">
+          <img src="assets/img/logo.png" alt="Cruzeiro do Sul">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="index.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="dashboard.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Sair</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+<main style="display: none;" class="mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mt-3">
+        <h1 class="mb-4">Adicionar Nota:</h1>
+        <section class="insert-nota">
+          <form id="formAdd" >
+            <div class="row">
+              <div class="col-md-6">
+               <div class="input-group">
+                <label class="input-group-text" for="newNome">Nome:</label>
+                <input class="form-control edit" type="text" name="Nome" id="newNome">
+               </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group">
+                  <label class="input-group-text" for="newRGM">RGM:</label>
+                  <input class="form-control edit" type="number" name="RGM" id="newRGM">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="input-group">
+                  <label class="input-group-text" for="newTurma">Turma:</label>
+                  <input class="form-control edit" type="text" name="Turma" id="newTurma">
+               </div>
+              </div>
+                <div class="col-md-4">
+                  <div class="input-group">
+                  <label class="input-group-text" for="newnotaDePortugues">Nota de Português:</label>
+                  <input class="form-control edit" type="number" name="Nota de Português" id="newnotaDePortugues" >
+              </div>
+            </div>
+              <div class="col-md-4">
+                <div class="input-group">
+                <label class="input-group-text" for="newnotaDeMatematica">Nota de Matemática:</label>
+                <input class="form-control edit" type="number" name="Nota de Matematica" id="newnotaDeMatematica" >
+            </div>              
+        </div>
+      </form>
+      <div class="col-md-4 col-md-4 ms-auto text-end">
+        <button id="btnAddAluno" type="button" class="btn btn-success">Salvar</button>
+      </div>
+        
+        </section>
+      </div>
+      <div class="col-12 mt-3">
+          <section class="table-notas table-responsive">
+            <h1 class="mb-4">Notas Cadastradas:</h1>
+          <input class="form-control" placeholder="Digite para pesquisar por Nome ou RGM..." autocomplete="off" type="text" name="search" id="search">
+          <table id="table-alunos" class="table table-striped ">
+            <caption>Nota média: 6</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Nome</th>
+                  <th scope="col">RGM</th>
+                  <th scope="col">Turma</th>
+                  <th scope="col">Nota de Português</th>
+                  <th scope="col">Nota de Matemática</th>
+                  <th scope="col">Média</th>
+                  <th scope="col">Editar</th>
+                  <th scope="col">Deletar</th>
+                </tr>
+              </thead>
+                <tbody id="table-body">
+                  <!-- via js -->
+                </tbody>
+              </table>
+           </section>
+      </div>
+    </div>
+  </div>
+</main>
+  
+<footer style="display: none;">
+        <div class="azul-menu">
+          <div class="container">
+            <div class="row">
+              <div class="col-12 text-center py-4">
+                <h4>Todos os direitos reservados Elias Graciano Rebequi<sup>&copy;</sup></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+</footer>
+
+
+<div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="modalEdit" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+   <div class="modal-content">
+     <div class="modal-header">
+        <h5 class="modal-title" id="modalEdit">Editar aluno <span id="nomeAluno"><span>:</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <form id="formEdit" >
+            <div class="row">
+              <div class="col-12">
+                <div class="input-group">
+                  <label class="input-group-text" for="ID">ID:</label>
+                  <input class="form-control edit" type="text" name="ID" id="ID" disabled>
+                </div>
+              </div>
+              <div class="col-md-6">
+               <div class="input-group">
+                <label class="input-group-text" for="Nome">Nome:</label>
+                <input class="form-control edit" type="text" name="Nome" id="Nome">
+               </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group">
+                  <label class="input-group-text" for="RGM">RGM:</label>
+                  <input class="form-control edit" type="number" name="RGM" id="RGM">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="input-group">
+                  <label class="input-group-text" for="Turma">Turma:</label>
+                  <input class="form-control edit" type="text" name="Turma" id="Turma">
+               </div>
+              </div>
+                <div class="col-md-4">
+                  <div class="input-group">
+                  <label class="input-group-text" for="notaDePortugues">Nota de Português:</label>
+                  <input class="form-control edit" type="number" name="Nota de Português" id="notaDePortugues" >
+              </div>
+            </div>
+              <div class="col-md-4">
+                <div class="input-group">
+                <label class="input-group-text" for="notaDeMatematica">Nota de Matemática:</label>
+                <input class="form-control edit" type="number" name="Nota de Matematica" id="notaDeMatematica" >
+            </div>              
+        </div>
+      </form>
+      </div>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+        <button id="btnEditAluno" type="button" class="btn btn-success">Salvar</button>
+      </div>
+    </div>
+  </div>
+ </div>
+</div>
+<div class="loading">
+<div class="container">
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border m-5" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="assets/bs5/js/bootstrap.js"></script>
+
+
+      
+</body>
+</html>
